@@ -1,49 +1,56 @@
-// DashBoard.js
-import React, { Component } from 'react';
+// DashBoard.jsx
+import React, { useEffect, useState } from 'react';
 import { getSlidesCount, updateSlidesCount } from '../database/Database';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { auth } from '../firebase';
 
-export default class DashBoard extends Component {
-  state = {
-    count: 0,
-  };
+const DashBoard = () => {
+  const [count, setCount] = useState(0);
+  const navigate = useNavigate();
 
-  componentDidMount() {
-    getSlidesCount().then((count) => {
-      this.setState({ count });
+  useEffect(() => {
+    const getCount = async () => {
+      const count = await getSlidesCount();
+      setCount(count);
       localStorage.setItem('slidesCount', count);
-    });
-  }
+    };
+    getCount();
+  }, []);
 
-  addSlide = () => {
-    const { count } = this.state;
-    updateSlidesCount(count + 1);
-    this.setState({ count: count + 1 });
-    localStorage.setItem('slidesCount', count + 1);
+  const addSlide = () => {
+    const newCount = count + 1;
+    updateSlidesCount(newCount);
+    setCount(newCount);
+    localStorage.setItem('slidesCount', newCount);
   };
 
-  removeSlide = () => {
-    const { count } = this.state;
+  const removeSlide = () => {
     if (count > 1) {
-      updateSlidesCount(count - 1);
-      this.setState({ count: count - 1 });
-      localStorage.setItem('slidesCount', count - 1);
+      const newCount = count - 1;
+      updateSlidesCount(newCount);
+      setCount(newCount);
+      localStorage.setItem('slidesCount', newCount);
     }
   };
 
-  render() {
-    const { count } = this.state;
+  const user = auth.currentUser;
 
-    return (
-      <div>
-        <h2>Slide Manager</h2>
-        <p>Current number of slides: {count}</p>
-        {count > 0 && (
-          <>
-            <button onClick={this.addSlide}>Add Slide</button>
-            <button onClick={this.removeSlide}>Remove Slide</button>
-          </>
-        )}
-      </div>
-    );
+  if (!user || user.email!== 'diakitekhalidou1@gmail.com') {
+    return <Navigate to="/login" replace />;
   }
-}
+
+  return (
+    <div>
+      <h2>Slide Manager</h2>
+      <p>Current number of slides: {count}</p>
+      {count > 0 && (
+        <>
+          <button onClick={addSlide}>Add Slide</button>
+          <button onClick={removeSlide}>Remove Slide</button>
+        </>
+      )}
+    </div>
+  );
+};
+
+export default DashBoard;
