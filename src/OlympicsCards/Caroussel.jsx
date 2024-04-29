@@ -4,9 +4,15 @@ import Carousel from "react-spring-3d-carousel";
 import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
 import { config } from "react-spring";
+import EnzoImage from '../assets/Enzo.png';
+import ManonImage from '../assets/Manon.png';
+import MaximImage from '../assets/Maxim.png';
+import JulienImage from '../assets/Julien.png';
+import CeciliaImage from '../assets/Cecilia.png';
+import SaraImage from '../assets/Sara.png';
 
 const Container = styled.div`
-  background-color: #3B3232;
+  background-color: #000000;
   width: 100%;
   height: 100vh;
   position: relative;
@@ -48,19 +54,27 @@ export default class Caroussel extends Component {
     slides: [
       {
         key: uuidv4(),
-        content: <Slide imageUrl="" alt="Slide 1" />,
+        content: <Slide imageUrl={EnzoImage} alt="Slide 1" />,
       },
       {
         key: uuidv4(),
-        content: <Slide imageUrl="" alt="Slide 2" />,
+        content: <Slide imageUrl={ManonImage} alt="Slide 2" />,
       },
       {
         key: uuidv4(),
-        content: <Slide imageUrl="" alt="Slide 3" />,
+        content: <Slide imageUrl={MaximImage} alt="Slide 3" />,
       },
       {
         key: uuidv4(),
-        content: <Slide imageUrl="" alt="Slide 4" />,
+        content: <Slide imageUrl={JulienImage} alt="Slide 4" />,
+      },
+      {
+        key: uuidv4(),
+        content: <Slide imageUrl={CeciliaImage} alt="Slide 5" />,
+      },
+      {
+        key: uuidv4(),
+        content: <Slide imageUrl={SaraImage} alt="Slide 6" />,
       },
     ],
     slidesCount: localStorage.getItem('slidesCount') || 0,
