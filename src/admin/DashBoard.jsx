@@ -47,6 +47,7 @@ const DashBoard = () => {
         <>
           <button onClick={addSlide}>Add Slide</button>
           <button onClick={removeSlide}>Remove Slide</button>
+          <img src="../assets/Enzo.png" alt="" />
         </>
       )}
     </div>

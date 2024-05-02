@@ -1,4 +1,3 @@
-// Caroussel.js
 import React, { Component } from "react";
 import Carousel from "react-spring-3d-carousel";
 import { v4 as uuidv4 } from 'uuid';
@@ -11,13 +10,20 @@ import JulienImage from '../assets/Julien.png';
 import CeciliaImage from '../assets/Cecilia.png';
 import SaraImage from '../assets/Sara.png';
 
+import ArrowImage from '../assets/Arrow.png';
+import ArrowImage2 from '../assets/Arrow2.png';
+
 const Container = styled.div`
-  background-color: #000000;
-  width: 100%;
+  background-color: #f30000;
+  width: 100vw;
   height: 100vh;
-  position: relative;
-  align-items: flex-start; 
+  position: absolute;
+  align-items: flex-start;
+  left: 0;
   text-align: center;
+  overflow-x: hidden;
+  padding: 20px;
+  font-family: "Jockey";
 `;
 
 const Titleflex = styled.div`
@@ -29,21 +35,62 @@ justify-content: space-evenly;
 flex-direction: column;
 align-content: stretch;
 align-items: baseline;
+font-family: "Jockey";
 `;
-
 
 const Title1 = styled.div`
 margin-left: 6%;
 margin-top: 2%;
 margin-bottom: 10px;
+color: #98D9EB;
+font-family: "Jockey";
+;
 `;
 
 const Title2 = styled.div`
+margin-left: 6%;
+margin-top: 2%;
+margin-bottom: 10px;
+color: #98D9EB;
+font-family: "Jockey";
 `;
 
-const Slide = ({ imageUrl }) => {
-  return <img src={imageUrl} alt="Slide" />;
+
+const Slide = ({ imageUrl, alt }) => {
+  return <img src={`${imageUrl}.png`} alt={alt} style={{ borderRadius: '10px' }} />;
 };
+
+const NavigationButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+`;
+
+const NavBtn = styled.button`
+  background-image: url(${ArrowImage2});
+  background-size: 100px 100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 200px;
+  height: 200px;
+  padding: 0;
+`;
+
+const NavBtnRight = styled.button`
+  background-image: url(${ArrowImage});
+  background-size: 100px 100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 200px;
+  height: 200px;
+  padding: 0;
+`;
 
 export default class Caroussel extends Component {
   state = {
@@ -72,7 +119,7 @@ export default class Caroussel extends Component {
         key: uuidv4(),
         content: <Slide imageUrl={CeciliaImage} alt="Slide 5" />,
       },
-      {
+     {
         key: uuidv4(),
         content: <Slide imageUrl={SaraImage} alt="Slide 6" />,
       },
@@ -80,22 +127,40 @@ export default class Caroussel extends Component {
     slidesCount: localStorage.getItem('slidesCount') || 0,
   };
 
+  handleNavigate= (direction) => {
+    const { goToSlide, slides } = this.state;
+    const newSlide = direction === 'left' ? Math.max(0, goToSlide - 1) : Math.min(goToSlide + 1, slides.length - 1);
+    this.setState({ goToSlide: newSlide });
+  };
+
   render() {
     const { slidesCount } = this.state;
+    let navigationButtons = null;
+    if (this.state.showNavigation) {
+      navigationButtons = (
+        <NavigationButtons>
+          <NavBtn onClick={() => this.handleNavigate('left')} />
+          <NavBtnRight onClick={() => this.handleNavigate('right')} />
+        </NavigationButtons>
+      );
+    }
 
     return (
         <Container>
 <Titleflex>
-        <Title1>Escrimeurs participants aux JO : {slidesCount}</Title1>
+        <Title1>DECOUVREZ LES {slidesCount} PARTICIPANTS AUX JO 2024 </Title1>
+        <Title2>SECTION ESCRIMEUR ! </Title2>
         </Titleflex>
-      <div style={{ width: "50%", height: "60vh", margin: "0 auto" }}>
+      <div style={{ width:"50%", height:"60vh", margin: "0 auto", borderRadius: "25px" }}>
       <Carousel
-        slides={this.state.slides}
-        goToSlide={this.state.goToSlide}
-        offsetRadius={this.state.offsetRadius}
-        showNavigation={this.state.showNavigation}
-        animationConfig={this.state.config}
-      />
+  slides={this.state.slides}
+  goToSlide={this.state.goToSlide}
+  offsetRadius={this.state.offsetRadius}
+  showNavigation={false}
+  animationConfig={this.state.config}
+  width="100vw"
+/>
+{navigationButtons}
         <div
           style={{
             margin: "0 auto",

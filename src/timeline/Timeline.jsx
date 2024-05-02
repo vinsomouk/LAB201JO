@@ -25,6 +25,7 @@ const Timeline = ({ setObserver, callback }) => {
   const timeline4 = useRef(null);
   const timeline5 = useRef(null);
   const timeline6 = useRef(null);
+  
   const circle1 = useRef(null);
   const circle2 = useRef(null);
   const circle3 = useRef(null);
@@ -245,8 +246,8 @@ export default function TimelineComponent() {
 
   return (
     <div className="App">
-      <h1>react-scroll-animation component</h1>
-      <div className="stub1">⬇️ scroll to start ⬇️</div>
+      <div>react-scroll-animation component</div>
+      <div className="stub1">L'escrime est un sport de combat où deux adversaires s'affrontent avec des armes blanches flexibles, c’est une discipline olympique depuis 1896. C’est dans cette discipline que l’athlète française Laura Flessel a excellé.</div>
       <TimelineObserver
   initialColor="#e5e5e5"
   fillColor="red"
@@ -257,7 +258,7 @@ export default function TimelineComponent() {
       setObserver={setObserver}
     />
   )}
-  reverse={false} // définir reverse sur false
+  reverse={false} 
 />
       <div className="stub2">{message}</div>
     </div>

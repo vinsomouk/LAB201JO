@@ -10,7 +10,8 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    position: relative; /* ajouté pour que la div wrapper soit positionnée par rapport à son parent */
+    position: relative; 
+    left: 30px;
     top: 600px; 
 }
   .timeline {

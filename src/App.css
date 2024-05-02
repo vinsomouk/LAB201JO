@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 }
+
+@font-face {
+  font-family: "Jockey";   /*Can be any text*/
+  src: local("JockeyOne"),
+    url("./fonts/JockeyOne-Regular.ttf") format("truetype");
+}
