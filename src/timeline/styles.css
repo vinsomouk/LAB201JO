@@ -1,67 +1,224 @@
 .App {
-    font-family: sans-serif;
-    text-align: center;
-    overflow-x: hidden ;
-    width: 100%;
-  }
-  
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    position: relative; 
-    left: 30px;
-    top: 600px; 
+  font-family: "Jockey";
+  text-align: center;
+  overflow-x: hidden;
+  width: 100%;
 }
-  .timeline {
-    height: 700px;
-    width: 5px;
-    background-color: #ea0000;
-  }
-  
-  .stub1 {
-    width: 100vw; /* ou width: 100% */
-    position: absolute; /* ou position: relative */
-    left: 0;
-    height: 600px;
-    font-size: 24px;
-    background-color: #006dda;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  position: relative;
+  top: 200px;
+  min-width: 1920px;
+  text-align: center; /* added */
 }
-  
-  .stub2 {
-    height: 1030px;
-  }
-  
-  .circle {
-    width: 30px;
-    height: 30px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    border-radius: 50%;
-    background-color: #e5e5e5;
-  }
-  
-  .circleWrapper {
-    position: relative;
-  }
-  
-  .message {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    min-width: 150px;
-    font-weight: bold;
-    font-size: 5rem;
-    transition: opacity 0.5s; /* animation duration */
-  }
 
-  .message.hidden {
-    opacity: 0;
-  }
+.timeline {
+  height: 900px;
+  width: 5px;
+  background-color: #ffffff;
+  left: -900px;
+  position: relative;
+}
 
-  .message.visible {
-    opacity: 1;
-  }
+.stub1 {
+  width: 100vw;
+  height: 200px;
+  background-color: #26156C;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-container {
+  min-height: 90px; /* set a minimum height for the text container */
+  line-height: 30px; /* set the line height to ensure that the text is spaced out evenly */
+}
+
+.stub3 {
+  width: 100vw;
+  color: black;
+  height: 200px;
+  font-size: 24px;
+  background-color: #ffffff;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  font-size: 5rem;
+}
+.stub4 {
+  position: relative;
+  width: 100vw;
+  height: 980px;
+  font-size: 24px;
+  background-color: #26156C;
+  text-align: center; /* added */
+}
+
+.stub4 video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 980px;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.stub4 video::-webkit-media-controls {
+  display: none;
+}
+
+.stub4 video::-moz-media-controls {
+  display: none;
+}
+
+.image-container {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 244px;
+  height: 134px;
+  background-image: url("../assets/Federation_francaise_descrime_logo.png");
+  background-size: cover;
+  z-index: 1;
+}
+
+.image-container img {
+  display: none;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 628px;
+  height: 334px;
+  z-index: 1;
+}
+
+.stub2 {
+  height: 1030px;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-radius: 50%;
+  background-color: #e5e5e5;
+  text-align: center; /* added */
+}
+
+.circleWrapper {
+  position: relative;
+  left: -900px;
+}
+
+.message {
+  position: absolute;
+  top: 20%;
+  left: 100px;
+  width: 1400px;
+  height: 800px;
+  font-weight: bold;
+  font-size: 5rem;
+  transition: opacity 0.5s;
+  overflow-wrap: break-word;
+  background-image: url("../assets/1936df6823f8a1311b92c603a11507d4.png");
+  background-size: cover;
+  margin: 25px;
+  text-align: center; /* added */
+}
+
+.message2 {
+  position: absolute;
+  top: 20%;
+  left: 100px;
+  width: 1400px;
+  height: 800px;
+  font-weight: bold;
+  font-size: 5rem;
+  transition: opacity 0.5s;
+  overflow-wrap: break-word;
+  background-image: url("../assets/71a357da6135da7236912223ef2122e1.png");
+  background-size: cover;
+  margin: 25px;
+  text-align: center; /* added */
+}
+
+.message3 {
+  position: absolute;
+  top: 20%;
+  left: 100px;
+  width: 1400px;
+  height: 800px;
+  font-weight: bold;
+  font-size: 5rem;
+  transition: opacity 0.5s;
+  overflow-wrap: break-word;
+  background-image: url("../assets/24d172a7db49da9a50cdf1e94ab5bd08.png");
+  background-size: cover;
+  margin: 25px;
+  text-align: center; /* added */
+}
+
+.message4 {
+  position: absolute;
+  top: 20%;
+  left: 100px;
+  width: 1400px;
+  height: 800px;
+  font-weight: bold;
+  font-size: 5rem;
+  transition: opacity 0.5s;
+  overflow-wrap: break-word;
+  background-image: url("../assets/a6133f69fbbf513b786cbb612e2e83a7.png");
+  background-size: cover;
+  margin: 25px;
+  text-align: center; /* added */
+}
+
+.message5 {
+  position: absolute;
+  top: 20%;
+  left: 100px;
+  width: 1400px;
+  height: 800px;
+  font-weight: bold;
+  font-size: 5rem;
+  color: black;
+  transition: opacity 0.5s;
+  overflow-wrap: break-word;
+  background-image: url("../assets/4c0cb387e58057529827c012f2634170.png");
+  background-size: cover;
+  margin: 25px;
+  text-align: center; /* added */
+}
+
+.message6 {
+  position: absolute;
+  top: 20%;
+  left: 100px;
+  width: 1400px;
+  height: 800px;
+  font-weight: bold;
+  font-size: 5rem;
+  transition: opacity 0.5s;
+  overflow-wrap: break-word;
+  background-image: url("../assets/a2345076b194040e4f8bb5e88a579c97.png");
+  background-size: cover;
+  margin: 25px;
+  text-align: center; /* added */
+}
+

@@ -1,7 +1,9 @@
 .app {
-    overflow-x: hidden;
-  }
-  
-  .carousel-container {
-    overflow-x: hidden;
-  }
+  overflow-x: hidden;
+  font-family: "Jockey";
+}
+
+.carousel-container {
+  overflow-x: hidden;
+  font-family: "Jockey";
+}

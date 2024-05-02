@@ -9,55 +9,55 @@ import MaximImage from '../assets/Maxim.png';
 import JulienImage from '../assets/Julien.png';
 import CeciliaImage from '../assets/Cecilia.png';
 import SaraImage from '../assets/Sara.png';
-
 import ArrowImage from '../assets/Arrow.png';
 import ArrowImage2 from '../assets/Arrow2.png';
 
 const Container = styled.div`
-  background-color: #f30000;
+  background-color: #26156C;
   width: 100vw;
-  height: 100vh;
+  height: 110vh;
   position: absolute;
   align-items: flex-start;
   left: 0;
   text-align: center;
   overflow-x: hidden;
+  overflow-y: hidden;
   padding: 20px;
   font-family: "Jockey";
 `;
 
 const Titleflex = styled.div`
-font-size: 60px;
-font-weight: bold;
-color: white;
-display: flex;
-justify-content: space-evenly;
-flex-direction: column;
-align-content: stretch;
-align-items: baseline;
-font-family: "Jockey";
+  font-size: 60px;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: baseline;
+  font-family: "Jockey";
 `;
 
 const Title1 = styled.div`
-margin-left: 6%;
-margin-top: 2%;
-margin-bottom: 10px;
-color: #98D9EB;
-font-family: "Jockey";
+  margin-left: 6%;
+  margin-top: 2%;
+  margin-bottom: 10px;
+  color: #98D9EB;
+  font-family: "Jockey";
 ;
 `;
 
 const Title2 = styled.div`
-margin-left: 6%;
-margin-top: 2%;
-margin-bottom: 10px;
-color: #98D9EB;
-font-family: "Jockey";
+  margin-left: 6%;
+  margin-top: 2%;
+  margin-bottom: 10px;
+  color: #98D9EB;
+  font-family: "Jockey";
 `;
 
 
 const Slide = ({ imageUrl, alt }) => {
-  return <img src={`${imageUrl}.png`} alt={alt} style={{ borderRadius: '10px' }} />;
+  return <img src={imageUrl} alt={alt} style={{ borderRadius: '10px' }} />;
 };
 
 const NavigationButtons = styled.div`
@@ -115,8 +115,7 @@ export default class Caroussel extends Component {
         key: uuidv4(),
         content: <Slide imageUrl={JulienImage} alt="Slide 4" />,
       },
-      {
-        key: uuidv4(),
+      {key: uuidv4(),
         content: <Slide imageUrl={CeciliaImage} alt="Slide 5" />,
       },
      {
@@ -124,7 +123,7 @@ export default class Caroussel extends Component {
         content: <Slide imageUrl={SaraImage} alt="Slide 6" />,
       },
     ],
-    slidesCount: localStorage.getItem('slidesCount') || 0,
+    slidesCount: localStorage.getItem('slidesCount') || 6,
   };
 
   handleNavigate= (direction) => {
@@ -151,25 +150,25 @@ export default class Caroussel extends Component {
         <Title1>DECOUVREZ LES {slidesCount} PARTICIPANTS AUX JO 2024 </Title1>
         <Title2>SECTION ESCRIMEUR ! </Title2>
         </Titleflex>
-      <div style={{ width:"50%", height:"60vh", margin: "0 auto", borderRadius: "25px" }}>
-      <Carousel
-  slides={this.state.slides}
-  goToSlide={this.state.goToSlide}
-  offsetRadius={this.state.offsetRadius}
-  showNavigation={false}
-  animationConfig={this.state.config}
-  width="100vw"
-/>
-{navigationButtons}
-        <div
-          style={{
-            margin: "0 auto",
-            marginTop: "2rem",
-            width: "50%",
-            display: "flex",
-            justifyContent: "space-around"
-          }}
-        >
+        <div style={{ width: "50%", height: "60vh", margin: "0 auto", borderRadius: "25px", boxSizing: "border-box" }}>
+  <Carousel
+    slides={this.state.slides}
+    goToSlide={this.state.goToSlide}
+    offsetRadius={this.state.offsetRadius}
+    showNavigation={false}
+    animationConfig={this.state.config}
+    width="100vw"
+  />
+  {navigationButtons}
+  <div
+    style={{
+      margin: "0 auto",
+      marginTop: "2rem",
+      width: "50%",
+      display: "flex",
+      justifyContent: "space-around"
+    }}
+  >
           
         </div>
       </div>
