@@ -11,7 +11,6 @@ export const getSlidesCount = () => {
         const count = snapshot.val().count;
         resolve(count);
       } else {
-        // Initialize the slides node with a count property set to 0
         update(slidesRef, { count: 0 }).then(() => {
           resolve(0);
         }).catch((error) => {

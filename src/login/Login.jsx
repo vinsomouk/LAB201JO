@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,9 +13,7 @@ const Login = () => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
      .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
-        // Check if user is an admin
         if (user.email === 'diakitekhalidou1@gmail.com') {
           navigate("/dashboard")
         } else {
@@ -24,9 +22,7 @@ const Login = () => {
         console.log(user);
       })
      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage)
+        console.log(error.code, error.message)
       });
   }
 
@@ -34,18 +30,9 @@ const Login = () => {
     e.preventDefault();
     setResetPassword(true);
     const userEmail = email;
-    getAuth()
-     .generatePasswordResetLink(userEmail, actionCodeSettings)
-     .then((link) => {
-        // Construct password reset email template, embed the link and send
-        // using custom SMTP server.
-        return sendCustomPasswordResetEmail(userEmail, displayName, link);
-      })
-     .catch((error) => {
-        // Some error occurred.
-      });
+    //...
   }
-  
+
   return (
     <>
       <main>
@@ -90,13 +77,9 @@ const Login = () => {
               </div>
 
               <p>
-    <a href="/reset" onClick={onResetPassword}>
-      Forgot password?
-    </a>
-  </p>
+                <a href="#" onClick={onResetPassword}>Forgot password?</a>
+              </p>
             </form>
-
-           
           </div>
         </section>
       </main>

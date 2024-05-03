@@ -42,7 +42,9 @@
 }
 
 @font-face {
-  font-family: "Jockey";   /*Can be any text*/
+  font-family: "Jockey";
   src: local("JockeyOne"),
     url("./fonts/JockeyOne-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }

@@ -7,3 +7,7 @@
   overflow-x: hidden;
   font-family: "Jockey";
 }
+
+body {
+  font-family: 'Jockey', sans-serif;
+}

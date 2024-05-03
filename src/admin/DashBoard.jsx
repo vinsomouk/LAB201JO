@@ -1,4 +1,3 @@
-// DashBoard.jsx
 import React, { useEffect, useState } from 'react';
 import { getSlidesCount, updateSlidesCount } from '../database/Database';
 import { Navigate, useNavigate } from 'react-router-dom';
@@ -42,7 +41,7 @@ const DashBoard = () => {
   return (
     <div>
       <h2>Slide Manager</h2>
-      <p>Current number of slides: {count}</p>
+      <p className='count'>{count}</p>
       {count > 0 && (
         <>
           <button onClick={addSlide}>Add Slide</button>

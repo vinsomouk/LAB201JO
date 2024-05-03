@@ -1,7 +1,8 @@
 import React from 'react';
 import TimelineComponent from '../timeline/Timeline';
 import Caroussel from "../OlympicsCards/Caroussel";
-import Footer from '../footer/Footer';
+
+
 import './index.css';
 
 const Home = () => {
@@ -9,7 +10,7 @@ const Home = () => {
     <div className="carousel-container">
       <TimelineComponent/>
       <Caroussel/>
-      <Footer />
+      
     </div>
   );
 };
